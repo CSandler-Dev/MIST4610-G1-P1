@@ -33,19 +33,6 @@ Our data model consists of 10 main entities with relationships that track all as
 | team_id | Team the player belongs to | INT | - | - | FK (Teams) |
 | join_date | Date player joined the club | DATE | - | YYYY-MM-DD | - |
 
-# Volleyball Club Database - Data Dictionary
-
-## Table: Players
-| Column Name | Description | Data Type | Size | Format | Key? |
-|-------------|-------------|-----------|------|--------|------|
-| player_id | Unique identifier for each player | INT | - | - | PK |
-| name | Player's full name | VARCHAR | 100 | - | - |
-| email | Player's email address | VARCHAR | 100 | - | - |
-| phone | Player's contact number | VARCHAR | 20 | - | - |
-| birth_date | Player's date of birth | DATE | - | YYYY-MM-DD | - |
-| team_id | Team the player belongs to | INT | - | - | FK (Teams) |
-| join_date | Date player joined the club | DATE | - | YYYY-MM-DD | - |
-
 ---
 
 ## Table: Coaches
