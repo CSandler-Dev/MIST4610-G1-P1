@@ -240,12 +240,12 @@ ORDER BY total_revenue_generated DESC;
 
 | SQL Feature | Q1 | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 | Q9 | Q10 |
 |-------------|----|----|----|----|----|----|----|----|----|----|
-| Multiple table join | ✓ | ✓ |    |    |    |    |    |    |    |    |
-| Subquery |    | ✓ |    |    |    |    |    |    |    |    |
-| GROUP BY | ✓ | ✓ | ✓ |    |    |    |    |    |    |    |
-| GROUP BY with HAVING | ✓ |    |    |    |    |    |    |    |    |    |
-| Aggregate function | ✓ | ✓ |    |    |    |    |    |    |    |    |
+| Multiple table join | ✓ | ✓ |    | ✓ |    |    |    |    |    |    |
+| Subquery |    | ✓ |    | ✓ |    |    |    |    |    |    |
+| GROUP BY | ✓ | ✓ | ✓ | ✓ |    |    |    |    |    |    |
+| GROUP BY with HAVING | ✓ |    |    | ✓ |    |    |    |    |    |    |
+| Aggregate function | ✓ | ✓ |    | ✓ |    |    |    |    |    |    |
 | CASE statement | ✓ | ✓ |    |    |    |    |    |    |    |    |
 | Multi-condition WHERE |    |    |    |    |    |    |    |    |    |    |
 | Built-in functions | ✓ | ✓ |    |    |    |    |    |    |    |    |
-| Calculated field | ✓ | ✓ |    |    |    |    |    |    |    |    |
+| Calculated field | ✓ | ✓ |    | ✓ |    |    |    |    |    |    |
