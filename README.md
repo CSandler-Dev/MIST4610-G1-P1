@@ -195,20 +195,27 @@ ORDER BY total_potential_revenue DESC;
 ---
 ### Query 3: The Most Active Teams Based on Tournament Participation
 
-**Description**: Finds the top teams that have participated in the most tournaments, ranking them by participation count.
+**Description**: Analyzes the performance and revenue generation of volleyball teams that participated in multiple tournaments during the year 2023. 
 
-**Justification**: The query helps the volleyball club management understand which teams are the most engaged in competitive tournaments. Which can be valuable for performance tracking, resource allocation, sponsorships, and player development.
+**Justification**: The query provides valuable insights into which teams are the most active and financially impactful for the volleyball club. Teams that participate in more tournaments and pay higher entry fees contribute significantly to the club's revenue stream. By identifying these high-performing teams, the club can focus on maintaining strong relationships with them, potentially offering incentives or rewards to keep them engaged.
 
 ```sql
-SELECT t.team_id,
+SELECT 
+    t.team_id,
     t.team_name,
-    c.name AS coach_name,
-    COUNT(tr.registration_id) AS tournament_count 
+    COUNT(tr.tournament_id) AS total_tournaments_participated,
+    SUM(tn.entry_fee) AS total_revenue_generated,
+    AVG(tn.entry_fee) AS average_entry_fee
 FROM Teams t
 JOIN Team_Registrations tr ON t.team_id = tr.team_id
-JOIN Coaches c ON t.coach_id = c.coach_id
-GROUP BY t.team_id, t.team_name, c.name
-ORDER BY tournament_count DESC;
+JOIN Tournaments tn ON tr.tournament_id = tn.tournament_id
+WHERE 
+    tn.start_date >= '2023-01-01' 
+    AND tn.end_date <= '2023-12-31'
+    AND tr.payment_status = 'Paid'
+GROUP BY t.team_id, t.team_name
+HAVING COUNT(tr.tournament_id) >= 2 AND AVG(tn.entry_fee) > 30
+ORDER BY total_revenue_generated DESC;
 ```
 ---
 ### Query 4: Tracking Tournament Participation and Entry Fees 
@@ -240,12 +247,12 @@ ORDER BY total_revenue_generated DESC;
 
 | SQL Feature | Q1 | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 | Q9 | Q10 |
 |-------------|----|----|----|----|----|----|----|----|----|----|
-| Multiple table join | ✓ | ✓ |    | ✓ |    |    |    |    |    |    |
-| Subquery |    | ✓ |    | ✓ |    |    |    |    |    |    |
+| Multiple table join | ✓ | ✓ | ✓ | ✓ |    |    |    |    |    |    |
+| Subquery |    | ✓ | ✓ | ✓ |    |    |    |    |    |    |
 | GROUP BY | ✓ | ✓ | ✓ | ✓ |    |    |    |    |    |    |
-| GROUP BY with HAVING | ✓ |    |    | ✓ |    |    |    |    |    |    |
-| Aggregate function | ✓ | ✓ |    | ✓ |    |    |    |    |    |    |
+| GROUP BY with HAVING | ✓ |    | ✓ | ✓ |    |    |    |    |    |    |
+| Aggregate function | ✓ | ✓ | ✓ | ✓ |    |    |    |    |    |    |
 | CASE statement | ✓ | ✓ |    |    |    |    |    |    |    |    |
-| Multi-condition WHERE |    |    |    |    |    |    |    |    |    |    |
+| Multi-condition WHERE |    |    |    | ✓ |    |    |    |    |    |    |
 | Built-in functions | ✓ | ✓ |    |    |    |    |    |    |    |    |
-| Calculated field | ✓ | ✓ |    | ✓ |    |    |    |    |    |    |
+| Calculated field | ✓ | ✓ | ✓ | ✓ |    |    |    |    |    |    |
