@@ -5,6 +5,7 @@
 ### Group 1
 - Caleb Sandler (cjs06002@uga.edu)
 - Nikita Brahmane (nrb26799@uga.edu)
+- Jimmy Vu (jnv31487@uga.edu)
 
 ## Scenario Description
 
@@ -301,12 +302,12 @@ ORDER BY total_entry_fees_paid DESC;
 
 | SQL Feature | Q1 | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 | Q9 | Q10 |
 |-------------|----|----|----|----|----|----|----|----|----|----|
-| Multiple table join | ✓ | ✓ | ✓ | ✓ |    |    |    |    |    |    |
+| Multiple table join | ✓ | ✓ | ✓ | ✓ |  ✓  |   ✓ |    |    |    |    |
 | Subquery |    | ✓ | ✓ | ✓ |    |    |    |    |    |    |
-| GROUP BY | ✓ | ✓ | ✓ | ✓ |    |    |    |    |    |    |
-| GROUP BY with HAVING | ✓ |    | ✓ | ✓ |    |    |    |    |    |    |
-| Aggregate function | ✓ | ✓ | ✓ | ✓ |    |    |    |    |    |    |
-| CASE statement | ✓ | ✓ |    |    |    |    |    |    |    |    |
-| Multi-condition WHERE |    |    |    | ✓ |    |    |    |    |    |    |
+| GROUP BY | ✓ | ✓ | ✓ | ✓ |    | ✓   |    |    |    |    |
+| GROUP BY with HAVING | ✓ |    | ✓ | ✓ |    | ✓   |    |    |    |    |
+| Aggregate function | ✓ | ✓ | ✓ | ✓ |    |  ✓  |    |    |    |    |
+| CASE statement | ✓ | ✓ |    |    |    | ✓   |    |    |    |    |
+| Multi-condition WHERE |    |    |    | ✓ |  ✓  |   ✓ |    |    |    |    |
 | Built-in functions | ✓ | ✓ |    |    |    |    |    |    |    |    |
-| Calculated field | ✓ | ✓ | ✓ | ✓ |    |    |    |    |    |    |
+| Calculated field | ✓ | ✓ | ✓ | ✓ |    |  ✓  |    |    |    |    |
