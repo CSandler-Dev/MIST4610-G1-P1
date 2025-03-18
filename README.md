@@ -195,7 +195,7 @@ ORDER BY total_potential_revenue DESC;
 ---
 ### Query 3: The Most Active Teams Based on Tournament Participation
 
-**Description**: This query finds the top teams that have participated in the most tournaments, ranking them by participation count.
+**Description**: Finds the top teams that have participated in the most tournaments, ranking them by participation count.
 
 **Justification**: The query helps the volleyball club management understand which teams are the most engaged in competitive tournaments. Which can be valuable for performance tracking, resource allocation, sponsorships, and player development.
 
@@ -219,7 +219,7 @@ ORDER BY tournament_count DESC;
 |-------------|----|----|----|----|----|----|----|----|----|----|
 | Multiple table join | ✓ | ✓ |    |    |    |    |    |    |    |    |
 | Subquery |    | ✓ |    |    |    |    |    |    |    |    |
-| GROUP BY | ✓ | ✓ |    |    |    |    |    |    |    |    |
+| GROUP BY | ✓ | ✓ | ✓ |    |    |    |    |    |    |    |
 | GROUP BY with HAVING | ✓ |    |    |    |    |    |    |    |    |    |
 | Aggregate function | ✓ | ✓ |    |    |    |    |    |    |    |    |
 | CASE statement | ✓ | ✓ |    |    |    |    |    |    |    |    |
