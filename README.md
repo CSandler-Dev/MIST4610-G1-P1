@@ -241,6 +241,59 @@ GROUP BY t.team_id, t.team_name
 HAVING COUNT(tr.tournament_id) > 1
 ORDER BY total_revenue_generated DESC;
 ```
+---
+### Query 5: Tracking Player Details and Emergency Contacts
+
+
+**Description:** Retrieves the player's name, the team they belong to, the name of their emergency contact, and the relationship of the contact to the player.
+
+**Justification:** This query provides a clear overview of player details and their associated emergency contacts, which is essential for organizational and safety purposes. Having quick access to this information ensures that the club can respond effectively in case of emergencies and maintain accurate records for all participants. This enhances the overall safety and operational efficiency of the club.
+
+
+```sql
+SELECT 
+       p.name AS player_name,
+   pec.name AS emergency_contact_name,
+    pec.phone AS emergency_contact_phone
+FROM Player_Emergency_Contacts pec
+JOIN Players p ON pec.player_id = p.player_id
+JOIN Team_Registrations tr ON p.team_id = tr.team_id
+JOIN Tournaments t ON tr.tournament_id = t.tournament_id
+WHERE t.name = 'Athens Spring Open'; 
+
+```
+---
+### Query 6: Players and Teams in the 'Fall Championship'
+
+**Description:** Analyzes which players, along with their team names and payment status, are registered in teams that have participated in the 'Fall Championship' tournament, and what their team's activity level and total entry fees paid.
+
+**Justification:** This query provides valuable insights into player and team participation in the 'Fall Championship', including their financial contributions and activity levels. By identifying teams with high activity and payment compliance, the club can ensure financial stability and recognize high-performing teams. Additionally, understanding player engagement helps in fostering stronger relationships and improving overall tournament organization.
+
+
+```sql
+SELECT 
+    p.name AS player_name,
+    p.email AS player_email,
+    t.team_name AS team_name,
+    tr.payment_status AS team_payment_status,
+    COUNT(DISTINCT tr.tournament_id) AS total_tournaments_participated,
+    CASE 
+        WHEN COUNT(DISTINCT tr.tournament_id) > 5 THEN 'Highly Active'
+        WHEN COUNT(DISTINCT tr.tournament_id) BETWEEN 2 AND 5 THEN 'Moderately Active'
+        ELSE 'Less Active'
+    END AS team_activity_level,
+    SUM(tn.entry_fee) AS total_entry_fees_paid
+FROM Players p
+JOIN Teams t ON p.team_id = t.team_id
+JOIN Team_Registrations tr ON t.team_id = tr.team_id
+JOIN Tournaments tn ON tr.tournament_id = tn.tournament_id
+WHERE tn.name = 'Fall Championship'
+GROUP BY p.name, p.email, t.team_name, tr.payment_status
+HAVING COUNT(DISTINCT tr.tournament_id) >= 1  
+   AND SUM(tn.entry_fee) > 0  
+ORDER BY total_entry_fees_paid DESC;
+
+```
 
 [Add remaining queries in same format]
 
