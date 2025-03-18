@@ -193,6 +193,17 @@ GROUP BY v.venue_id, v.name, v.capacity
 ORDER BY total_potential_revenue DESC;
 ```
 ---
+
+```sql
+SELECT t.team_id,
+    t.team_name,
+    c.name AS coach_name,
+    COUNT(tr.registration_id) AS tournament_count 
+FROM Teams t
+JOIN Team_Registrations tr ON t.team_id = tr.team_id
+JOIN Coaches c ON t.coach_id = c.coach_id
+GROUP BY t.team_id, t.team_name, c.name
+ORDER BY tournament_count DESC; 
 [Add remaining queries in same format]
 
 ## Matrix of Query Features
