@@ -4,8 +4,9 @@
 
 ### Group 1
 - Caleb Sandler (cjs06002@uga.edu)
+- Nikita Brahmane (nrb26799@uga.edu)
 
-## Problem Description
+## Scenario Description
 
 Our client is a volleyball club that manages players, coaches, teams, venues, courts, tournaments, and practices. The club is experiencing rapid growth with over 200 players across junior, high school, and adult divisions. They needed a database to replace their inefficient system of spreadsheets and paper records to track:
 - Player team assignments and memberships
