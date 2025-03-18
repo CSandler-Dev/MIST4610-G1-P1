@@ -211,6 +211,29 @@ GROUP BY t.team_id, t.team_name, c.name
 ORDER BY tournament_count DESC;
 ```
 ---
+### Query 4: Tracking Tournament Participation and Entry Fees 
+
+**Description**: Analysis of the revenue generate from tournament entry fees for teams that are highly active in participating in tournaments.
+
+**Justification**: The club can use the total revenue generated to evaluate the success of tournaments and decide whether to host more or adjust entry fees. Also, knowing which teams are most active helps the club allocate resources (e.g., court time, coaching staff) more effectively.
+
+```sql
+SELECT 
+    t.team_id,
+    t.team_name,
+    COUNT(tr.tournament_id) AS total_tournaments_participated,
+    SUM(tour.entry_fee) AS total_revenue_generated,
+    AVG(tour.entry_fee) AS average_entry_fee_per_tournament
+FROM 
+    Teams t
+JOIN Team_Registrations tr ON t.team_id = tr.team_id
+JOIN Tournaments tour ON tr.tournament_id = tour.tournament_id
+WHERE tr.payment_status = 'Paid'
+GROUP BY t.team_id, t.team_name
+HAVING COUNT(tr.tournament_id) > 1
+ORDER BY total_revenue_generated DESC;
+```
+
 [Add remaining queries in same format]
 
 ## Matrix of Query Features
