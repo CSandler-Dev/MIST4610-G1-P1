@@ -4,7 +4,7 @@
 
 ### Group 1
 - Caleb Sandler (cjs06002@uga.edu)
-- Nikita Brahmane (nrb26799@uga.edu)
+- Nikita Brahmane (@nikitabrahmane)
 - Jimmy Vu (jnv31487@uga.edu)
 
 ## Scenario Description
