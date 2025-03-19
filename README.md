@@ -246,7 +246,7 @@ ORDER BY total_revenue_generated DESC;
 ### Query 5: Tracking Player Details and Emergency Contacts
 
 
-**Description:** Retrieves the player's name, the team they belong to, the name of their emergency contact, and the relationship of the contact to the player.
+**Description:** Retrieves the player's name, the team they belong to, the name of their emergency contact, and the relationship of the contact to the player for players in the Athens Spring Open.
 
 **Justification:** This query provides a clear overview of player details and their associated emergency contacts, which is essential for organizational and safety purposes. Having quick access to this information ensures that the club can respond effectively in case of emergencies and maintain accurate records for all participants. This enhances the overall safety and operational efficiency of the club.
 
@@ -260,8 +260,21 @@ FROM Player_Emergency_Contacts pec
 JOIN Players p ON pec.player_id = p.player_id
 JOIN Team_Registrations tr ON p.team_id = tr.team_id
 JOIN Tournaments t ON tr.tournament_id = t.tournament_id
-WHERE t.name = 'Athens Spring Open'; 
+WHERE t.name = 'Athens Spring Open';
 
+Result
+
+| Player Name        | Emergency Contact Name | Emergency Contact Phone |
+|--------------------|------------------------|-------------------------|
+| Emma Davis         | John Davis             | 706-555-6001            |
+| Emma Davis         | Laura Davis            | 706-555-6002            |
+| Michael Chen       | Wei Chen               | 706-555-6003            |
+| Sophia Rodriguez   | Carlos Rodriguez       | 706-555-6004            |
+| Ethan Taylor       | Sarah Taylor           | 706-555-6007            |
+| Isabella Martinez  | Miguel Martinez        | 706-555-6008            |
+| Alexander Wright   | Jennifer Wright        | 706-555-6013            |
+| Noah Garcia        | Elena Garcia           | 706-555-6011            |
+| Mia Lee            | Daniel Lee             | 706-555-6012            |
 ```
 ---
 ### Query 6: Players and Teams in the 'Fall Championship'
@@ -294,6 +307,16 @@ HAVING COUNT(DISTINCT tr.tournament_id) >= 1
    AND SUM(tn.entry_fee) > 0  
 ORDER BY total_entry_fees_paid DESC;
 
+Result
+
+| Player Name        | Player Email       | Team Name           | Team Payment Status | Total Tournaments Participated | Team Activity Level | Total Entry Fees Paid |
+|--------------------|--------------------|---------------------|---------------------|--------------------------------|---------------------|-----------------------|
+| Alexander Wright   | alex.w@email.com   | Athens Advantage    | Pending             | 1                              | Less Active         | 60.00                 |
+| Emma Davis         | emma.d@email.com   | Athens Aces         | Pending             | 1                              | Less Active         | 60.00                 |
+| Ethan Taylor       | ethan.t@email.com  | Athens Advantage    | Pending             | 1                              | Less Active         | 60.00                 |
+| Isabella Martinez  | isabella.m@email.com| Athens Advantage   | Pending             | 1                              | Less Active         | 60.00                 |
+| Michael Chen       | michael.c@email.com| Athens Aces         | Pending             | 1                              | Less Active         | 60.00                 |
+| Sophia Rodriguez   | sophia.r@email.com | Athens Aces         | Pending             | 1                              | Less Active         | 60.00                 |
 ```
 
 [Add remaining queries in same format]
