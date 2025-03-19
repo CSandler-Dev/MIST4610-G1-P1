@@ -219,6 +219,16 @@ GROUP BY t.team_id, t.team_name
 HAVING COUNT(tr.tournament_id) >= 2 AND AVG(tn.entry_fee) > 30
 ORDER BY total_revenue_generated DESC;
 ```
+**Result**: 
+## Tournament Revenue Report
+
+| team_id | team_name         | total_tournaments_participated | total_revenue_generated | average_entry_fee |
+|---------|------------------|-------------------------------|------------------------|-------------------|
+| 5       | Net Gainers      | 3                             | 205.00                 | 68.333333         |
+| 2       | Bulldog Smash    | 2                             | 155.00                 | 77.500000         |
+| 1       | Athens Aces      | 2                             | 80.00                  | 40.000000         |
+| 3       | Athens Advantage | 2                             | 80.00                  | 40.000000         |
+
 ---
 ### Query 4: Tracking Tournament Participation and Entry Fees 
 
@@ -242,7 +252,18 @@ GROUP BY t.team_id, t.team_name
 HAVING COUNT(tr.tournament_id) > 1
 ORDER BY total_revenue_generated DESC;
 ```
+**Result**:
+### Tournament Entry Fee Analysis
+
+| team_id | team_name         | total_tournaments_participated | total_revenue_generated | average_entry_fee_per_tournament |
+|---------|------------------|-------------------------------|------------------------|--------------------------------|
+| 5       | Net Gainers      | 3                             | 205.00                 | 68.333333                      |
+| 2       | Bulldog Smash    | 2                             | 155.00                 | 77.500000                      |
+| 1       | Athens Aces      | 2                             | 80.00                  | 40.000000                      |
+| 3       | Athens Advantage | 2                             | 80.00                  | 40.000000                      |
+
 ---
+
 ### Query 5: Tracking Player Details and Emergency Contacts
 
 
