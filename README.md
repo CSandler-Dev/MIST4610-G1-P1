@@ -33,7 +33,7 @@ To ensure consistent training, the club schedules **Practice_Sessions** for team
 
 The **Membership_Plans** entity defines the different types of memberships offered by the club. Each plan includes attributes such as membership type, cost, and duration. There is a many-to-many relationship between **Membership_Plans** and **Players** since this club offers individual and bundled membership plans. Memberships ensures that multiple players can subscribe to the same plan each player's membership is linked to only one plan at a time. But the **Player_Memberships** entity acting as the bridge between players and their chosen membership plans. It records which membership plan a player is enrolled in, along with the start and end dates of their membership.
 
-To enhance player safety, our model includes a Player Emergency Contacts entity. Each player can have multiple emergency contacts, such as parents or guardians, ensuring quick communication in case of an emergency. This establishes a one-to-many relationship between Players and Player Emergency Contacts, as each player can have multiple contacts, but each contact is tied to a specific player. The Player Emergency Contacts entity includes attributes like the contact’s name, relationship to the player, phone number, and email address.
+To enhance player safety, our model also includes a **Player_Emergency_Contacts** entity. Each player can have multiple emergency contacts, like parents or guardians, ensuring quick communication in case of an emergency. This establishes a one-to-many relationship between **Players** and **Player_Emergency_Contacts**, since each player can have multiple contacts, but each contact is tied to a specific player. The **Player_Emergency_Contacts** entity also includes attributes like the contact’s name, relationship to the player, phone number, and email address.
 
 By replacing spreadsheets and paper records, this structured data model enhances the efficiency of club operations, ensures a more accurate records, and provides a scalable solution for future growth.
 
@@ -52,7 +52,7 @@ By replacing spreadsheets and paper records, this structured data model enhances
 
 ---
 
-## Coaches
+### Coaches
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | coach_id | Unique identifier for each coach | INT | - | - | PK |
@@ -63,7 +63,7 @@ By replacing spreadsheets and paper records, this structured data model enhances
 
 ---
 
-## Teams
+### Teams
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | team_id | Unique identifier for each team | INT | - | - | PK |
@@ -73,7 +73,7 @@ By replacing spreadsheets and paper records, this structured data model enhances
 
 ---
 
-## Venues
+### Venues
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | venue_id | Unique identifier for each venue | INT | - | - | PK |
@@ -83,7 +83,7 @@ By replacing spreadsheets and paper records, this structured data model enhances
 
 ---
 
-## Courts
+### Courts
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | court_id | Unique identifier for each court | INT | - | - | PK |
@@ -92,7 +92,7 @@ By replacing spreadsheets and paper records, this structured data model enhances
 
 ---
 
-## Tournaments
+### Tournaments
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | tournament_id | Unique identifier for each tournament | INT | - | - | PK |
@@ -102,7 +102,7 @@ By replacing spreadsheets and paper records, this structured data model enhances
 
 ---
 
-## Team_Registrations
+### Team_Registrations
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | registration_id | Unique identifier for each registration | INT | - | - | PK |
@@ -112,7 +112,7 @@ By replacing spreadsheets and paper records, this structured data model enhances
 
 ---
 
-## Practice_Sessions
+### Practice_Sessions
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | session_id | Unique identifier for each practice session | INT | - | - | PK |
@@ -122,7 +122,7 @@ By replacing spreadsheets and paper records, this structured data model enhances
 
 ---
 
-## Player_Attendance
+### Player_Attendance
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | attendance_id | Unique identifier for each attendance record | INT | - | - | PK |
@@ -132,7 +132,7 @@ By replacing spreadsheets and paper records, this structured data model enhances
 
 ---
 
-## Membership_Plans
+### Membership_Plans
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | plan_id | Unique identifier for each membership plan | INT | - | - | PK |
@@ -142,7 +142,7 @@ By replacing spreadsheets and paper records, this structured data model enhances
 
 ---
 
-## Player_Memberships
+### Player_Memberships
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | membership_id | Unique identifier for each player membership | INT | - | - | PK |
@@ -153,7 +153,7 @@ By replacing spreadsheets and paper records, this structured data model enhances
 
 ---
 
-## Player_Emergency_Contacts
+### Player_Emergency_Contacts
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | contact_id | Unique identifier for each emergency contact | INT | - | - | PK |
