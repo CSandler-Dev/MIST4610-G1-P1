@@ -6,7 +6,7 @@
 - Caleb Sandler [@csandlerdev](https://github.com/CSandler-Dev/MIST4610-G1-P1)
 - Nikita Brahmane [@nikitabrahmane](https://github.com/nikitabrahmane)
 - Jimmy Vu [@jimmyvu0223](https://github.com/jimmyvu0223)
-- John Housman (jah88867@uga.edu)
+- John Housman [@jhousman1](https://github.com/jhousman1)
 
 ## Scenario Description
 
@@ -169,7 +169,7 @@ By replacing spreadsheets and paper records, this structured data model enhances
 | SQL Feature | Q1 | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 | Q9 | Q10 |
 |-------------|----|----|----|----|----|----|----|----|----|----|
 | Multiple table join | ✓ | ✓ | ✓ |  |  ✓  |   ✓ | ✓  | ✓   |    |    |
-| Subquery |    | ✓ | ✓ |   |    |    |    |    |    |    |
+| Subquery |    | ✓ | ✓ |   |    |    |    |    | ✓  |    |
 | GROUP BY | ✓ | ✓ | ✓ | ✓ |    | ✓   |  ✓  |    |    |    |
 | GROUP BY with HAVING | ✓ |    | ✓ | ✓ |    | ✓   | ✓   |    |    |    |
 | Aggregate function | ✓ | ✓ | ✓ | ✓ |    |  ✓  |  ✓  |    |    |    |
@@ -446,6 +446,50 @@ WHERE pm.status = 'Active';
 | 12        | Alexander Wright  | Active |  
 
 ---
+
+## Query 9: Available Courts
+
+**Description:** This query retrieves courts that are available for scheduling at a given venue by identifying courts that are not currently booked for any practice sessions. It ensures that only unoccupied courts are displayed.
+
+**Justification:** This query helps club administrators and facility managers efficiently manage court reservations, prevent double booking, and optimize facility usage. By quickly identifying available courts, it allows for better scheduling and resource allocation.
+
+```sql
+SELECT court_id, court_number, venue_id
+FROM Courts
+WHERE court_id NOT IN (
+    SELECT DISTINCT court_id 
+    FROM Practice_Sessions
+);
+```
+
+**Result**:
+| court_id | court_number | venue_id |  
+|----------|-------------|----------|  
+| 3        | 3           | 1        |  
+| 6        | 3           | 2        |  
+| 8        | 2           | 3        |  
+
+---
+
+## Query 10: Venues with Enough Capacity for Events
+**Description:** This query retrieves a list of venues that can accommodate medium to large events by filtering for venues with a capacity of 200 or more. It returns the venue ID, name, and capacity, ensuring that event organizers can quickly identify suitable locations.
+
+**Justification:** This query helps event planners and facility managers select venues that meet minimum space requirements for tournaments, practices, or special events. It prevents overcrowding, improves facility usage efficiency, and aids in strategic planning for high-attendance activities.
+
+```sql
+SELECT venue_id, name, capacity
+FROM Venues
+WHERE capacity >= 200;
+```
+
+**Result**:
+| venue_id | name                  | capacity |  
+|----------|----------------------|----------|  
+| 1        | Athens Tennis Center | 200      |  
+| 2        | UGA Tennis Complex   | 350      |
+
+---
+
 
 # Database Information
 - Username: al_Group_21484_G1
