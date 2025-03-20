@@ -6,6 +6,7 @@
 - Caleb Sandler (cjs06002@uga.edu)
 - Nikita Brahmane [@nikitabrahmane](https://github.com/nikitabrahmane)
 - Jimmy Vu (jnv31487@uga.edu)
+- John Housman (jah88867@uga.edu)
 
 ## Scenario Description
 
@@ -334,19 +335,95 @@ Result
 | Michael Chen       | michael.c@email.com| Athens Aces         | Pending             | 1                              | Less Active         | 60.00                 |
 | Sophia Rodriguez   | sophia.r@email.com | Athens Aces         | Pending             | 1                              | Less Active         | 60.00                 |
 ```
+---
+### Query 7: Low Attendance Player Report
+
+**Description:** This query retrieves a list of players who have attended 50% or fewer of their scheduled practice sessions. It includes the player’s name, their team, and their assigned coach, along with the total number of practices, attended practices, and their attendance percentage.
+
+**Justification:** This query helps coaches and managers identify players with low attendance (≤50%) in practice sessions. Low attendance can indicate lack of engagement, scheduling conflicts, or potential dropouts. By tracking these players, coaches can address issues early, improve team performance, and optimize training resources. This ensures that teams remain competitive and that resources (like court time and coaching) are efficiently used.
+
+
+```sql
+SELECT 
+    p.player_id,
+    p.name AS player_name,
+    t.team_name,
+    c.name AS coach_name,
+    COUNT(pa.attendance_id) AS total_practices,
+    SUM(IF(pa.status = 'Present', 1, NULL)) AS practices_attended,
+    ROUND((SUM(IF(pa.status = 'Present', 1, NULL)) / COUNT(pa.attendance_id)) * 100, 2) AS attendance_percentage
+FROM Players p
+JOIN Teams t ON p.team_id = t.team_id
+JOIN Coaches c ON t.coach_id = c.coach_id
+JOIN Player_Attendance pa ON p.player_id = pa.player_id
+GROUP BY p.player_id, p.name, t.team_name, c.name
+HAVING attendance_percentage <= 50
+ORDER BY attendance_percentage ASC;
+```
+
+**Result**:
+## Player Attendance Report  
+| player_id | player_name       | team_name         | coach_name       | total_practices | practices_attended | attendance_percentage |  
+|-----------|------------------|------------------|-----------------|----------------|--------------------|----------------------|  
+| 3         | Sophia Rodriguez  | Athens Aces      | Maria Johnson   | 2              | 1                  | 50.00                |  
+| 4         | Thomas Jackson    | Bulldog Smash    | Robert Smith    | 2              | 1                  | 50.00                |  
+| 7         | Isabella Martinez | Athens Advantage | David Williams  | 2              | 1                  | 50.00                |  
+| 11        | Mia Lee           | Net Gainers      | Sarah Brown     | 2              | 1                  | 50.00                |  
+
+---
+
+### Query 8: Active Players
+
+**Description:** This query retrieves a list of players who have an active membership status by joining the Players and Player_Membership tables. It filters results to include only players where the membership status is marked as "Active."
+
+**Justification:** This query helps club managers and administrators quickly identify currently enrolled members, ensuring that only eligible players participate in practices and tournaments. It also assists in membership tracking, financial management, and facility usage planning.
+
+```sql
+SELECT p.player_id, p.name, pm.status
+FROM Players p
+JOIN Player_Membership pm ON p.player_id = pm.player_id
+WHERE pm.status = 'Active';
+```
+
+**Result**:
+## Active Players Report  
+| player_id | name               | status  |  
+|-----------|-------------------|--------|  
+| 1         | Emma Davis        | Active |  
+| 2         | Michael Chen      | Active |  
+| 3         | Sophia Rodriguez  | Active |  
+| 4         | Thomas Jackson    | Active |  
+| 5         | Olivia Kim        | Active |  
+| 6         | Ethan Taylor      | Active |  
+| 7         | Isabella Martinez | Active |  
+| 8         | James Wilson      | Active |  
+| 9         | Ava Thompson      | Active |  
+| 10        | Noah Garcia       | Active |  
+| 11        | Mia Lee           | Active |  
+| 12        | Alexander Wright  | Active |  
+
+---
+
+
+
+
+
+
+
 
 [Add remaining queries in same format]
+
 
 ## Matrix of Query Features
 
 | SQL Feature | Q1 | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 | Q9 | Q10 |
 |-------------|----|----|----|----|----|----|----|----|----|----|
-| Multiple table join | ✓ | ✓ | ✓ |  |  ✓  |   ✓ |    |    |    |    |
+| Multiple table join | ✓ | ✓ | ✓ |  |  ✓  |   ✓ | ✓  | ✓   |    |    |
 | Subquery |    | ✓ | ✓ |   |    |    |    |    |    |    |
-| GROUP BY | ✓ | ✓ | ✓ | ✓ |    | ✓   |    |    |    |    |
-| GROUP BY with HAVING | ✓ |    | ✓ | ✓ |    | ✓   |    |    |    |    |
-| Aggregate function | ✓ | ✓ | ✓ | ✓ |    |  ✓  |    |    |    |    |
+| GROUP BY | ✓ | ✓ | ✓ | ✓ |    | ✓   |  ✓  |    |    |    |
+| GROUP BY with HAVING | ✓ |    | ✓ | ✓ |    | ✓   | ✓   |    |    |    |
+| Aggregate function | ✓ | ✓ | ✓ | ✓ |    |  ✓  |  ✓  |    |    |    |
 | CASE statement | ✓ | ✓ |    | ✓ |    | ✓   |    |    |    |    |
-| Multi-condition WHERE |    |    |    |    |  ✓  |   ✓ |    |    |    |    |
-| Built-in functions | ✓ | ✓ |    |    |    |    |    |    |    |    |
-| Calculated field | ✓ | ✓ | ✓ | ✓ |    |  ✓  |    |    |    |    |
+| Multi-condition WHERE |    |    |    |    |  ✓  |   ✓ |    | ✓   |    |    |
+| Built-in functions | ✓ | ✓ |    |    |    |    | ✓   |    |    |    |
+| Calculated field | ✓ | ✓ | ✓ | ✓ |    |  ✓  | ✓   |    |    |    |
