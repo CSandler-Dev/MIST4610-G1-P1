@@ -21,7 +21,17 @@ Our client is a volleyball club that manages players, coaches, teams, venues, co
 
 ![Volleyball Club Data Model](dm-ss.png)
 
-Our data model consists of 10 main entities with relationships that track all aspects of the volleyball club operations. Players belong to teams, which are led by coaches. Teams participate in tournaments, practice on courts within venues, and players maintain membership plans. The model efficiently tracks attendance, emergency contacts, and tournament registrations.
+Our data model is designed to manage the operations of a rapidly growing volleyball club by efficiently managing players, coaches, teams, venues, courts, tournaments, and practices. The core of the model is the Players entity that stores key information such as player names, contact information, birth dates, and the teams they belong to. Each player belongs to a Team, creating a one-to-many relationship where a team has many players, but each player belongs to only one team at any given point in time.
+
+The Teams entity represents different volleyball teams in the club. Each team is managed by a Coach but a Coach can manage multiple teams which also creates a one-to-many relationship between the two entities. Coaches have their own attributes such as names, contact information, and certifications to ensure that the club maintains a structured coaching system.
+
+Venues and courts are also core components of the database. The Venues table holds information about the different sports facilities used by the club, such as addresses and capacity. The Courts entity has specific court numbers and court types to identify the court. A Venue can have multiple courts, which is seen with the one-to-many relationship between the Venues and Courts tables. 
+
+The club also conducts Tournaments, where teams compete against each other. The Tournaments entity stores essential data such as tournament names, locations, dates, and entry fees. There is a many-to-many relationship between Teams and Tournaments, since teams can participate in multiple tournaments and tournaments can host multiple teams. This is all handled through an associative entity called Team Registration which tracks team participation and payments in the tournaments.
+
+To ensure consistent training, the club schedules Practices for teams. The Practices entity holds information about practice sessions, including scheduled times, assigned courts, and associated teams. A practice session takes place on a specific court, creating the one-to-many relationship between Courts and Practices, and with Teams and Practices.
+
+By replacing spreadsheets and paper records, this structured data model enhances the efficiency of club operations, ensures a more accurate records, and provides a scalable solution for future growth.
 
 # Data Dictionary
 
