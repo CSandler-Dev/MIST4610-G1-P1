@@ -17,13 +17,13 @@ Our client is a volleyball club that manages players, coaches, teams, venues, co
 - Court bookings and availability
 - Emergency contact information for safety compliance
 
-## Data Model
+# Data Model
 
 ![Volleyball Club Data Model](dm-ss.png)
 
 Our data model consists of 10 main entities with relationships that track all aspects of the volleyball club operations. Players belong to teams, which are led by coaches. Teams participate in tournaments, practice on courts within venues, and players maintain membership plans. The model efficiently tracks attendance, emergency contacts, and tournament registrations.
 
-## Data Dictionary
+# Data Dictionary
 
 ### Table: Players
 | Column Name | Description | Data Type | Size | Format | Key? |
@@ -148,7 +148,7 @@ Our data model consists of 10 main entities with relationships that track all as
 | phone | Emergency contact number | VARCHAR | 20 | - | - |
 | relationship | Relationship to the player | VARCHAR | 50 | - | - |
 
-## Queries
+# Queries
 
 ### Query 1: Player Attendance Analysis
 
@@ -172,6 +172,15 @@ GROUP BY p.player_id, p.name, t.team_name, c.name
 HAVING SUM(CASE WHEN pa.status = 'Absent' THEN 1 ELSE 0 END) > 0
 ORDER BY attendance_percentage ASC;
 ```
+**Result**:
+| player_id | player_name       | team_name        | coach_name     | total_practices | practices_attended | attendance_percentage |
+| --------- | ----------------- | ---------------- | -------------- | --------------- | ------------------ | --------------------- |
+| 3 | Sophia Rodriguez | Athens Aces | Maria Johnson  | 2 | 1 | 50.00 |
+| 7 | Isabella Martinez | Athens Advantage | David Williams | 2 | 1 | 50.00 |
+| 11 | Mia Lee | Net Gainers | Sarah Brown | 2 | 1 | 50.00 |
+| 4 | Thomas Jackson | Bulldog Smash | Robert Smith | 2 | 1 | 50.00 |
+| 10 | Noah Garcia | Net Gainers | Sarah Brown | 2 | 1 | 50.00 |
+
 ---
 ### Query 2: Tournament Revenue Analysis by Venue
 
@@ -195,6 +204,13 @@ JOIN Team_Registrations tr ON t.tournament_id = tr.tournament_id
 GROUP BY v.venue_id, v.name, v.capacity
 ORDER BY total_potential_revenue DESC;
 ```
+**Result**:
+| venue_id | venue_name | capacity | total_tournaments | total_registrations | potential_revenue | actual_revenue | payment_rate | upcoming |
+| -------- | --------------------- | -------- | ----------------- | ------------------- | ----------------- | -------------- | ------------ | -------- |
+| 2 | UGA Volleyball Center | 350 | 2                 | 5                   | 310.00            | 235.00         | 75.81        | 2        |
+| 1        | Athens Sports Complex | 200      | 2                 | 5                   | 240.00            | 210.00         | 87.50        | 1        |
+| 3        | Riverside Gym         | 150      | 1                 | 2                   | 120.00            | 0.00           | 0.00         | 1        |
+
 ---
 ### Query 3: The Most Active Teams Based on Tournament Participation
 
@@ -220,8 +236,8 @@ GROUP BY t.team_id, t.team_name
 HAVING COUNT(tr.tournament_id) >= 2 AND AVG(tn.entry_fee) > 30
 ORDER BY total_revenue_generated DESC;
 ```
+
 **Result**: 
-## Tournament Revenue Report
 | team_id | team_name         | total_tournaments_participated | total_revenue_generated | average_entry_fee |
 |---------|------------------|-------------------------------|------------------------|-------------------|
 | 5       | Net Gainers      | 3                             | 205.00                 | 68.333333         |
@@ -251,8 +267,8 @@ GROUP BY age_division
 HAVING COUNT(p.player_id) > 0 -- Ensure only divisions with players are included
 ORDER BY player_count DESC;
 ```
+
 **Result**:
-### Age Divisions
 | age_division | player_count |
 |--------------|--------------|
 | High School  | 8            |
@@ -278,9 +294,9 @@ JOIN Players p ON pec.player_id = p.player_id
 JOIN Team_Registrations tr ON p.team_id = tr.team_id
 JOIN Tournaments t ON tr.tournament_id = t.tournament_id
 WHERE t.name = 'Athens Spring Open';
+```
 
-Result
-
+**Result**:
 | Player Name        | Emergency Contact Name | Emergency Contact Phone |
 |--------------------|------------------------|-------------------------|
 | Emma Davis         | John Davis             | 706-555-6001            |
@@ -292,7 +308,7 @@ Result
 | Alexander Wright   | Jennifer Wright        | 706-555-6013            |
 | Noah Garcia        | Elena Garcia           | 706-555-6011            |
 | Mia Lee            | Daniel Lee             | 706-555-6012            |
-```
+
 ---
 ### Query 6: Players and Teams in the 'Fall Championship'
 
@@ -323,9 +339,9 @@ GROUP BY p.name, p.email, t.team_name, tr.payment_status
 HAVING COUNT(DISTINCT tr.tournament_id) >= 1  
    AND SUM(tn.entry_fee) > 0  
 ORDER BY total_entry_fees_paid DESC;
+```
 
-Result
-
+**Result**:
 | Player Name        | Player Email       | Team Name           | Team Payment Status | Total Tournaments Participated | Team Activity Level | Total Entry Fees Paid |
 |--------------------|--------------------|---------------------|---------------------|--------------------------------|---------------------|-----------------------|
 | Alexander Wright   | alex.w@email.com   | Athens Advantage    | Pending             | 1                              | Less Active         | 60.00                 |
@@ -334,7 +350,7 @@ Result
 | Isabella Martinez  | isabella.m@email.com| Athens Advantage   | Pending             | 1                              | Less Active         | 60.00                 |
 | Michael Chen       | michael.c@email.com| Athens Aces         | Pending             | 1                              | Less Active         | 60.00                 |
 | Sophia Rodriguez   | sophia.r@email.com | Athens Aces         | Pending             | 1                              | Less Active         | 60.00                 |
-```
+
 ---
 ### Query 7: Low Attendance Player Report
 
@@ -362,7 +378,6 @@ ORDER BY attendance_percentage ASC;
 ```
 
 **Result**:
-## Player Attendance Report  
 | player_id | player_name       | team_name         | coach_name       | total_practices | practices_attended | attendance_percentage |  
 |-----------|------------------|------------------|-----------------|----------------|--------------------|----------------------|  
 | 3         | Sophia Rodriguez  | Athens Aces      | Maria Johnson   | 2              | 1                  | 50.00                |  
@@ -386,7 +401,6 @@ WHERE pm.status = 'Active';
 ```
 
 **Result**:
-## Active Players Report  
 | player_id | name               | status  |  
 |-----------|-------------------|--------|  
 | 1         | Emma Davis        | Active |  
@@ -403,15 +417,6 @@ WHERE pm.status = 'Active';
 | 12        | Alexander Wright  | Active |  
 
 ---
-
-
-
-
-
-
-
-
-[Add remaining queries in same format]
 
 
 ## Matrix of Query Features
