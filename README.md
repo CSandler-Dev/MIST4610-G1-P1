@@ -199,7 +199,7 @@ ORDER BY total_potential_revenue DESC;
 
 **Description**: Analyzes the performance and revenue generation of volleyball teams that participated in multiple tournaments during the year 2023. 
 
-**Justification**: The query provides valuable insights into which teams are the most active and financially impactful for the volleyball club. Teams that participate in more tournaments and pay higher entry fees contribute significantly to the club's revenue stream. By identifying these high-performing teams, the club can focus on maintaining strong relationships with them, potentially offering incentives or rewards to keep them engaged.
+**Justification**: Provides valuable insights into which teams are the most active and financially impactful for the volleyball club. Teams that participate in more tournaments and pay higher entry fees contribute significantly to the club's revenue stream. By identifying these high-performing teams, the club can focus on maintaining strong relationships with them.
 
 ```sql
 SELECT 
@@ -230,30 +230,36 @@ ORDER BY total_revenue_generated DESC;
 | 3       | Athens Advantage | 2                             | 80.00                  | 40.000000         |
 
 ---
-### Query 4: Tracking Tournament Participation and Entry Fees 
+### Query 4: Breakdown of Players by Age Division 
 
-**Description**: Analysis of the revenue generate from tournament entry fees for teams that are highly active in participating in tournaments.
+**Description**: Categorizes players in the volleyball club into three age division (Juniors, High School, and Adult) based on their birth dates.
 
-**Justification**: The club can use the total revenue generated to evaluate the success of tournaments and decide whether to host more or adjust entry fees. Also, knowing which teams are most active helps the club allocate resources (e.g., court time, coaching staff) more effectively.
+**Justification**: Helps the club understand the distribution of players across different age groups. Which can be used for planning age-specific programs, tournaments, and training sessions. The query can be run periodically to track changes in player demographics over time. 
 
 ```sql
 SELECT 
-    t.team_id,
-    t.team_name,
-    COUNT(tr.tournament_id) AS total_tournaments_participated,
-    SUM(tour.entry_fee) AS total_revenue_generated,
-    AVG(tour.entry_fee) AS average_entry_fee_per_tournament
-FROM 
-    Teams t
-JOIN Team_Registrations tr ON t.team_id = tr.team_id
-JOIN Tournaments tour ON tr.tournament_id = tour.tournament_id
-WHERE tr.payment_status = 'Paid'
-GROUP BY t.team_id, t.team_name
-HAVING COUNT(tr.tournament_id) > 1
-ORDER BY total_revenue_generated DESC;
+    CASE
+        WHEN TIMESTAMPDIFF(YEAR, p.birth_date, CURDATE()) < 14 THEN 'Juniors'
+        WHEN TIMESTAMPDIFF(YEAR, p.birth_date, CURDATE()) BETWEEN 14 AND 18 THEN 'High School'
+        ELSE 'Adult'
+    END AS age_division,
+    COUNT(p.player_id) AS player_count
+FROM Players p
+WHERE p.birth_date IS NOT NULL
+    AND TIMESTAMPDIFF(YEAR, p.birth_date, CURDATE()) >= 10 -- Ensure players are at least 10 years old
+GROUP BY age_division
+HAVING COUNT(p.player_id) > 0 -- Ensure only divisions with players are included
+ORDER BY player_count DESC;
 ```
+
 **Result**:
-### 
+### Age Divisions
+
+| age_division | player_count |
+|--------------|--------------|
+| High School  | 8            |
+| Adult        | 4            |
+
 ---
 
 ### Query 5: Tracking Player Details and Emergency Contacts
