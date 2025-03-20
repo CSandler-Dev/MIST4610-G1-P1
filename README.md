@@ -3,7 +3,7 @@
 ## Team Name and Members
 
 ### Group 1
-- Caleb Sandler ([Caleb's Github Repo](https://github.com/CSandler-Dev/MIST4610-G1-P1))
+- Caleb Sandler ([@csandlerdev](https://github.com/CSandler-Dev/MIST4610-G1-P1))
 - Nikita Brahmane [@nikitabrahmane](https://github.com/nikitabrahmane)
 - Jimmy Vu [@jimmyvu0223](https://github.com/jimmyvu0223)
 - John Housman (jah88867@uga.edu)
