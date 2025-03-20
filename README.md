@@ -224,7 +224,7 @@ SELECT
     t.team_name,
     COUNT(tr.tournament_id) AS total_tournaments_participated,
     SUM(tn.entry_fee) AS total_revenue_generated,
-    AVG(tn.entry_fee) AS average_entry_fee
+    ROUND(AVG(tn.entry_fee), 2) AS average_entry_fee
 FROM Teams t
 JOIN Team_Registrations tr ON t.team_id = tr.team_id
 JOIN Tournaments tn ON tr.tournament_id = tn.tournament_id
@@ -240,10 +240,10 @@ ORDER BY total_revenue_generated DESC;
 **Result**: 
 | team_id | team_name         | total_tournaments_participated | total_revenue_generated | average_entry_fee |
 |---------|------------------|-------------------------------|------------------------|-------------------|
-| 5       | Net Gainers      | 3                             | 205.00                 | 68.333333         |
-| 2       | Bulldog Smash    | 2                             | 155.00                 | 77.500000         |
-| 1       | Athens Aces      | 2                             | 80.00                  | 40.000000         |
-| 3       | Athens Advantage | 2                             | 80.00                  | 40.000000         |
+| 5       | Net Gainers      | 3                             | 205.00                 | 68.33         |
+| 2       | Bulldog Smash    | 2                             | 155.00                 | 77.50         |
+| 1       | Athens Aces      | 2                             | 80.00                  | 40.00         |
+| 3       | Athens Advantage | 2                             | 80.00                  | 40.00         |
 
 ---
 ### Query 4: Breakdown of Players by Age Division 
@@ -430,5 +430,5 @@ WHERE pm.status = 'Active';
 | Aggregate function | ✓ | ✓ | ✓ | ✓ |    |  ✓  |  ✓  |    |    |    |
 | CASE statement | ✓ | ✓ |    | ✓ |    | ✓   |    |    |    |    |
 | Multi-condition WHERE |    |    |    |    |  ✓  |   ✓ |    | ✓   |    |    |
-| Built-in functions | ✓ | ✓ |    |    |    |    | ✓   |    |    |    |
+| Built-in functions | ✓ | ✓ | ✓ |    |    |    | ✓   |    |    |    |
 | Calculated field | ✓ | ✓ | ✓ | ✓ |    |  ✓  | ✓   |    |    |    |
