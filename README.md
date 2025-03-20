@@ -25,7 +25,7 @@ Our data model consists of 10 main entities with relationships that track all as
 
 # Data Dictionary
 
-### Table: Players
+### Players
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | player_id | Unique identifier for each player | INT | - | - | PK |
@@ -38,7 +38,7 @@ Our data model consists of 10 main entities with relationships that track all as
 
 ---
 
-## Table: Coaches
+## Coaches
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | coach_id | Unique identifier for each coach | INT | - | - | PK |
@@ -49,7 +49,7 @@ Our data model consists of 10 main entities with relationships that track all as
 
 ---
 
-## Table: Teams
+## Teams
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | team_id | Unique identifier for each team | INT | - | - | PK |
@@ -69,7 +69,7 @@ Our data model consists of 10 main entities with relationships that track all as
 
 ---
 
-## Table: Courts
+## Courts
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | court_id | Unique identifier for each court | INT | - | - | PK |
@@ -78,7 +78,7 @@ Our data model consists of 10 main entities with relationships that track all as
 
 ---
 
-## Table: Tournaments
+## Tournaments
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | tournament_id | Unique identifier for each tournament | INT | - | - | PK |
@@ -88,7 +88,7 @@ Our data model consists of 10 main entities with relationships that track all as
 
 ---
 
-## Table: Team_Registrations
+## Team_Registrations
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | registration_id | Unique identifier for each registration | INT | - | - | PK |
@@ -98,7 +98,7 @@ Our data model consists of 10 main entities with relationships that track all as
 
 ---
 
-## Table: Practice_Sessions
+## Practice_Sessions
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | session_id | Unique identifier for each practice session | INT | - | - | PK |
@@ -108,7 +108,7 @@ Our data model consists of 10 main entities with relationships that track all as
 
 ---
 
-## Table: Player_Attendance
+## Player_Attendance
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | attendance_id | Unique identifier for each attendance record | INT | - | - | PK |
@@ -118,7 +118,7 @@ Our data model consists of 10 main entities with relationships that track all as
 
 ---
 
-## Table: Membership_Plans
+## Membership_Plans
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | plan_id | Unique identifier for each membership plan | INT | - | - | PK |
@@ -128,7 +128,7 @@ Our data model consists of 10 main entities with relationships that track all as
 
 ---
 
-## Table: Player_Memberships
+## Player_Memberships
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | membership_id | Unique identifier for each player membership | INT | - | - | PK |
@@ -139,7 +139,7 @@ Our data model consists of 10 main entities with relationships that track all as
 
 ---
 
-## Table: Player_Emergency_Contacts
+## Player_Emergency_Contacts
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | contact_id | Unique identifier for each emergency contact | INT | - | - | PK |
