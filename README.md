@@ -150,7 +150,22 @@ Our data model consists of 10 main entities with relationships that track all as
 
 # Queries
 
-### Query 1: Player Attendance Analysis
+### Matrix of Query Features
+
+| SQL Feature | Q1 | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 | Q9 | Q10 |
+|-------------|----|----|----|----|----|----|----|----|----|----|
+| Multiple table join | ✓ | ✓ | ✓ |  |  ✓  |   ✓ | ✓  | ✓   |    |    |
+| Subquery |    | ✓ | ✓ |   |    |    |    |    |    |    |
+| GROUP BY | ✓ | ✓ | ✓ | ✓ |    | ✓   |  ✓  |    |    |    |
+| GROUP BY with HAVING | ✓ |    | ✓ | ✓ |    | ✓   | ✓   |    |    |    |
+| Aggregate function | ✓ | ✓ | ✓ | ✓ |    |  ✓  |  ✓  |    |    |    |
+| CASE statement | ✓ | ✓ |    | ✓ |    | ✓   |    |    |    |    |
+| Multi-condition WHERE |    |    |    |    |  ✓  |   ✓ |    | ✓   |    |    |
+| Built-in functions | ✓ | ✓ | ✓ |    |    |    | ✓   |    |    |    |
+| Calculated field | ✓ | ✓ | ✓ | ✓ |    |  ✓  | ✓   |    |    |    |
+---
+
+## Query 1: Player Attendance Analysis
 
 **Description**: Identifies players who have missed practices and calculates their attendance rates.
 
@@ -182,7 +197,7 @@ ORDER BY attendance_percentage ASC;
 | 10 | Noah Garcia | Net Gainers | Sarah Brown | 2 | 1 | 50.00 |
 
 ---
-### Query 2: Tournament Revenue Analysis by Venue
+## Query 2: Tournament Revenue Analysis by Venue
 
 **Description**: Analyzes tournament hosting, team participation, and revenue generation by venue.
 
@@ -212,7 +227,7 @@ ORDER BY total_potential_revenue DESC;
 | 3        | Riverside Gym         | 150      | 1                 | 2                   | 120.00            | 0.00           | 0.00         | 1        |
 
 ---
-### Query 3: The Most Active Teams Based on Tournament Participation
+## Query 3: The Most Active Teams Based on Tournament Participation
 
 **Description**: Analyzes the performance and revenue generation of volleyball teams that participated in multiple tournaments during the year 2023. 
 
@@ -246,7 +261,7 @@ ORDER BY total_revenue_generated DESC;
 | 3       | Athens Advantage | 2                             | 80.00                  | 40.00         |
 
 ---
-### Query 4: Breakdown of Players by Age Division 
+## Query 4: Breakdown of Players by Age Division 
 
 **Description**: Categorizes players in the volleyball club into three age division (Juniors, High School, and Adult) based on their birth dates.
 
@@ -276,7 +291,7 @@ ORDER BY player_count DESC;
 
 ---
 
-### Query 5: Tracking Player Details and Emergency Contacts
+## Query 5: Tracking Player Details and Emergency Contacts
 
 
 **Description:** Retrieves the player's name, the team they belong to, the name of their emergency contact, and the relationship of the contact to the player for players in the Athens Spring Open.
@@ -310,7 +325,7 @@ WHERE t.name = 'Athens Spring Open';
 | Mia Lee            | Daniel Lee             | 706-555-6012            |
 
 ---
-### Query 6: Players and Teams in the 'Fall Championship'
+## Query 6: Players and Teams in the 'Fall Championship'
 
 **Description:** Analyzes which players, along with their team names and payment status, are registered in teams that have participated in the 'Fall Championship' tournament, and what their team's activity level and total entry fees paid.
 
@@ -352,7 +367,7 @@ ORDER BY total_entry_fees_paid DESC;
 | Sophia Rodriguez   | sophia.r@email.com | Athens Aces         | Pending             | 1                              | Less Active         | 60.00                 |
 
 ---
-### Query 7: Low Attendance Player Report
+## Query 7: Low Attendance Player Report
 
 **Description:** This query retrieves a list of players who have attended 50% or fewer of their scheduled practice sessions. It includes the player’s name, their team, and their assigned coach, along with the total number of practices, attended practices, and their attendance percentage.
 
@@ -387,7 +402,7 @@ ORDER BY attendance_percentage ASC;
 
 ---
 
-### Query 8: Active Players
+## Query 8: Active Players
 
 **Description:** This query retrieves a list of players who have an active membership status by joining the Players and Player_Membership tables. It filters results to include only players where the membership status is marked as "Active."
 
@@ -418,17 +433,6 @@ WHERE pm.status = 'Active';
 
 ---
 
-
-## Matrix of Query Features
-
-| SQL Feature | Q1 | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 | Q9 | Q10 |
-|-------------|----|----|----|----|----|----|----|----|----|----|
-| Multiple table join | ✓ | ✓ | ✓ |  |  ✓  |   ✓ | ✓  | ✓   |    |    |
-| Subquery |    | ✓ | ✓ |   |    |    |    |    |    |    |
-| GROUP BY | ✓ | ✓ | ✓ | ✓ |    | ✓   |  ✓  |    |    |    |
-| GROUP BY with HAVING | ✓ |    | ✓ | ✓ |    | ✓   | ✓   |    |    |    |
-| Aggregate function | ✓ | ✓ | ✓ | ✓ |    |  ✓  |  ✓  |    |    |    |
-| CASE statement | ✓ | ✓ |    | ✓ |    | ✓   |    |    |    |    |
-| Multi-condition WHERE |    |    |    |    |  ✓  |   ✓ |    | ✓   |    |    |
-| Built-in functions | ✓ | ✓ | ✓ |    |    |    | ✓   |    |    |    |
-| Calculated field | ✓ | ✓ | ✓ | ✓ |    |  ✓  | ✓   |    |    |    |
+# Database Information
+- Username: al_Group_21484_G1
+- Password: Group_21484_G1
