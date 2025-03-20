@@ -221,7 +221,6 @@ ORDER BY total_revenue_generated DESC;
 ```
 **Result**: 
 ## Tournament Revenue Report
-
 | team_id | team_name         | total_tournaments_participated | total_revenue_generated | average_entry_fee |
 |---------|------------------|-------------------------------|------------------------|-------------------|
 | 5       | Net Gainers      | 3                             | 205.00                 | 68.333333         |
@@ -251,10 +250,8 @@ GROUP BY age_division
 HAVING COUNT(p.player_id) > 0 -- Ensure only divisions with players are included
 ORDER BY player_count DESC;
 ```
-
 **Result**:
 ### Age Divisions
-
 | age_division | player_count |
 |--------------|--------------|
 | High School  | 8            |
