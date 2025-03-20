@@ -59,7 +59,7 @@ Our data model consists of 10 main entities with relationships that track all as
 
 ---
 
-## Table: Venues
+## Venues
 | Column Name | Description | Data Type | Size | Format | Key? |
 |-------------|-------------|-----------|------|--------|------|
 | venue_id | Unique identifier for each venue | INT | - | - | PK |
