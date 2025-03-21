@@ -173,7 +173,6 @@ By replacing spreadsheets and paper records, this structured data model enhances
 | GROUP BY | ✓ | ✓ | ✓ | ✓ |    | ✓   |  ✓  |    |    |    |
 | GROUP BY with HAVING | ✓ |    | ✓ | ✓ |    | ✓   | ✓   |    |    |    |
 | Aggregate function | ✓ | ✓ | ✓ | ✓ |    |  ✓  |  ✓  |    |    |    |
-| CASE statement | ✓ | ✓ |    | ✓ |    | ✓   |    |    |    |    |
 | Multi-condition WHERE |    |    |    |    |  ✓  |   ✓ |    | ✓   |    |    |
 | Built-in functions | ✓ | ✓ | ✓ |    |    |    | ✓   |    |    |    |
 | Calculated field | ✓ | ✓ | ✓ | ✓ |    |  ✓  | ✓   |    |    |    |
