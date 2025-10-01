@@ -1,0 +1,15 @@
+# Demo File
+
+This is a demonstration file created via the GitHub API!
+
+Created on: October 1, 2025
+Author: Caleb Sandler
+
+This file shows how you can add files to your GitHub repositories programmatically.
+
+## Features Demonstrated:
+- Creating new files via API
+- Committing directly to repositories
+- Managing repository content remotely
+
+You can edit this file or delete it as needed!
